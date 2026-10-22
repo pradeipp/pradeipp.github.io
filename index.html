@@ -1,70 +1,251 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pradeep Pandey</title>
+<meta name="description" content="Pradeep Pandey. Mobile test automation engineer in Kathmandu. Work, notes and writing.">
+<meta property="og:title" content="Pradeep Pandey">
+<meta property="og:description" content="Mobile test automation engineer in Kathmandu. Work, notes and writing.">
+<meta property="og:url" content="https://pradeeppandey.com.np/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://pradeeppandey.com.np/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-body, html {
-  height: 100%;
+/* Layout: one reading column, left-aligned. Dates sit in a mono gutter like a log; the name is the only loud thing. */
+:root {
+  --paper: #FAFAF7;
+  --ink: #15171C;
+  --muted: #5D6270;
+  --rule: #E1E2E6;
+  --accent: #2340C9;
+  --mark: #E9ECFB;
+  --f-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #111216; --ink: #E7E8EC; --muted: #9A9FAD; --rule: #262932; --accent: #93A6FF; --mark: #1C2140;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #111216; --ink: #E7E8EC; --muted: #9A9FAD; --rule: #262932; --accent: #93A6FF; --mark: #1C2140;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
   margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
 }
+.page { max-width: 44rem; margin: 0 auto; padding-block: 56px 64px; display: flex; flex-direction: column; gap: 72px; }
 
-.bgimg {
-  background-image: url('https://i.redd.it/1nh7vohpko401.jpg');
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-  position: relative;
-  color: white;
-  font-family: "Helvetica", Courier, monospace;
-  font-size: 25px;
-}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
-.topleft {
-  position: absolute;
-  top: 0;
-  left: 16px;
-}
+h1, h2, h3 { font-family: var(--f-display); margin: 0; line-height: 1.1; text-wrap: balance; }
+h2 { font-size: 1.05rem; font-weight: 800; letter-spacing: .02em; }
+p { margin: 0; }
 
-.githublink {
-  font-size:15px;
-  background-color:rgb(0, 0, 0, 0.5);
-  border-radius: 2px;
-  padding: 2px 5px 2px 5px;
-  color:rgb(175, 228, 216)
-}
+/* top */
+.top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; font-family: var(--f-mono); font-size: .85rem; color: var(--muted); }
+.top nav { display: flex; gap: 18px; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover { color: var(--ink); }
 
-.middle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
+.hero { display: flex; flex-direction: column; gap: 22px; }
+.hero h1 { font-size: clamp(3rem, 11vw, 5.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: .95; font-variation-settings: "opsz" 96; }
+.hero .lead { font-size: 1.35rem; line-height: 1.45; max-width: 34ch; }
+.hero .lead em { font-style: italic; }
+.prose { display: flex; flex-direction: column; gap: 14px; max-width: 62ch; }
 
-.textbox{
-    position:absolute;
-    left:20px;
-    top:15px;
-}
+/* sections */
+section { display: flex; flex-direction: column; gap: 22px; }
+section > header { display: flex; align-items: baseline; gap: 14px; border-bottom: 1px solid var(--rule); padding-bottom: 10px; }
+section > header .note { font-family: var(--f-mono); font-size: .8rem; color: var(--muted); margin-left: auto; }
 
-hr {
-  margin: auto;
-  width: 40%;
+/* log-style rows */
+.log { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 26px; }
+.log li { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 4px 24px; }
+.when { font-family: var(--f-mono); font-size: .85rem; color: var(--muted); padding-top: 5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.what { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.what h3 { font-size: 1.25rem; font-weight: 800; }
+.what h3 span { font-weight: 500; color: var(--muted); }
+.what .role { font-family: var(--f-mono); font-size: .85rem; color: var(--muted); }
+.what p { max-width: 58ch; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.tags span { font-family: var(--f-mono); font-size: .76rem; padding: 2px 8px; border-radius: 4px; background: var(--mark); color: var(--ink); }
+
+.now { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; max-width: 62ch; }
+.now li { padding-left: 1.4rem; position: relative; }
+.now li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-family: var(--f-mono); }
+
+.writing a.title { font-family: var(--f-display); font-weight: 800; font-size: 1.2rem; line-height: 1.25; color: var(--ink); text-decoration: none; }
+.writing a.title:hover { color: var(--accent); }
+
+.contact { display: flex; flex-wrap: wrap; gap: 10px 28px; font-family: var(--f-mono); font-size: .95rem; }
+
+footer { border-top: 1px solid var(--rule); padding-top: 18px; font-family: var(--f-mono); font-size: .8rem; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; }
+
+@media (max-width: 560px) {
+  body { font-size: 1.0625rem; }
+  .page { padding-block: 32px 48px; gap: 56px; }
+  .log li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .when { padding-top: 0; }
+  .hero .lead { font-size: 1.2rem; }
 }
 </style>
+</head>
 <body>
+<div class="page">
 
-<div class="bgimg">
-  <div class="topleft">
-    <!-- <p>Logo</p> -->
+  <div class="top">
+    <span>pradeeppandey.com.np</span>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
-  <div class="middle">
-    <h1>COMING SOON</h1>
-    <hr>
-    <!-- <p>35 days left</p> -->
-  </div>
-  <div class="textbox">
-    <a class="githublink" href="https://www.github.com/pradeipp">github.com/pradeipp</a>
-  </div>
+
+  <header class="hero">
+    <h1>Pradeep<br>Pandey</h1>
+    <p class="lead">I test mobile apps for a living. Mostly by writing software that does the testing for me.</p>
+    <div class="prose">
+      <p>Right now that's at <a href="https://licel.com">Licel</a>, a mobile app security company, where I work on Android and iOS test automation and the device farms it all runs on.</p>
+      <p>I'm based in Kathmandu. This site is where I keep the work, the writing, and whatever else I end up building.</p>
+    </div>
+  </header>
+
+  <section aria-labelledby="about-h">
+    <header><h2 id="about-h">About</h2></header>
+    <div class="prose">
+      <p>So the short version.. I'm a problem-solver first. New domains and new tech are the fun part. Routine is just part of life.</p>
+      <p>I've built test automation frameworks from the ground up enough times that it's become a habit. And CI/CD is where that work actually comes alive.</p>
+      <p>I've only ever worked with global, multicultural teams. I think that's made me a student of people as much as of software. I care about ownership, keeping things organised, and talking clearly and often.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="now-h">
+    <header><h2 id="now-h">Now</h2><span class="note">Oct 2026</span></header>
+    <ul class="now">
+      <li>Mobile test automation at Licel. Appium, Python, GitLab CI/CD, physical and virtual devices.</li>
+      <li>Rebuilding this site. I had it back in 2019, lost it, and only just got the domain back.</li>
+      <li>Writing a bit more, here and on LinkedIn.</li>
+    </ul>
+  </section>
+
+  <section id="work" aria-labelledby="work-h">
+    <header><h2 id="work-h">Work</h2><span class="note">since 2018</span></header>
+    <ol class="log">
+      <li>
+        <div class="when">2024 – now</div>
+        <div class="what">
+          <h3>Licel <span>· remote</span></h3>
+          <div class="role">QA Automation Engineer</div>
+          <p>Android and iOS test automation for mobile app security products. Pipelines in GitLab CI/CD, and a fleet of physical and virtual devices across several servers to run them on.</p>
+          <div class="tags"><span>Appium</span><span>Python</span><span>GitLab CI/CD</span><span>Android</span><span>iOS</span><span>Device farms</span></div>
+        </div>
+      </li>
+      <li>
+        <div class="when">2022 – 2024</div>
+        <div class="what">
+          <h3>Plantura GmbH <span>· Kathmandu</span></h3>
+          <div class="role">QA Engineer</div>
+          <p>QA and test automation lead for both mobile (React Native on Android and iOS) and web.</p>
+          <div class="tags"><span>React Native</span><span>Web automation</span><span>Docker</span><span>Documentation</span></div>
+        </div>
+      </li>
+      <li>
+        <div class="when">2019 – 2022</div>
+        <div class="what">
+          <h3>Verisk <span>· Lalitpur</span></h3>
+          <div class="role">Trainee → Associate Software Engineer → Software Engineer</div>
+          <p>Where I learned what quality assurance is, and what it could be.</p>
+          <div class="tags"><span>Python</span><span>Java</span><span>Software QA</span></div>
+        </div>
+      </li>
+      <li>
+        <div class="when">2018 – 2019</div>
+        <div class="what">
+          <h3>Internships</h3>
+          <p>Business apps on the Odoo framework in Python at BI Solutions. Before that, Laravel web development and image recognition with Keras at Robust IT Concepts.</p>
+        </div>
+      </li>
+      <li>
+        <div class="when">2014 – 2018</div>
+        <div class="what">
+          <h3>Himalaya College of Engineering</h3>
+          <div class="role">Bachelor's, Computer Engineering</div>
+          <p>Also ISTQB® Certified Tester, Foundation Level.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="writing" class="writing" aria-labelledby="writing-h">
+    <header><h2 id="writing-h">Writing</h2><span class="note">mostly on LinkedIn, for now</span></header>
+    <ol class="log">
+      <li>
+        <div class="when">2026</div>
+        <div class="what">
+          <a class="title" href="https://www.linkedin.com/in/pradeipp/recent-activity/all/">A bank account in your name that you never opened</a>
+          <p>Leaked keyboxes, forged attestation and injected camera feeds. Every check is green and it's still fraud.</p>
+        </div>
+      </li>
+      <li>
+        <div class="when">2026</div>
+        <div class="what">
+          <a class="title" href="https://www.linkedin.com/in/pradeipp/recent-activity/all/">Write your comments yourself, at least</a>
+          <p>On AI-generated arguments in comment sections. Your English isn't broken. It's flavoured.</p>
+        </div>
+      </li>
+      <li>
+        <div class="when">2025</div>
+        <div class="what">
+          <a class="title" href="https://www.linkedin.com/in/pradeipp/recent-activity/all/">Let us invest in startups, not just donate</a>
+          <p>Why Section 12(c) of Nepal's Income Tax Act should say 'investment' instead of 'grant'.</p>
+        </div>
+      </li>
+      <li>
+        <div class="when">2025</div>
+        <div class="what">
+          <a class="title" href="https://www.linkedin.com/in/pradeipp/recent-activity/all/">Tracking January's expenses in February</a>
+          <p>Looking for an app in Nepal that pulls transactions from banks and eSewa, so I don't have to.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-h">
+    <header><h2 id="contact-h">Contact</h2></header>
+    <p class="prose">LinkedIn is the easiest way to reach me.</p>
+    <div class="contact">
+      <a href="https://www.linkedin.com/in/pradeipp/">LinkedIn</a>
+      <a href="https://github.com/pradeipp">GitHub</a>
+      <!-- Add an email here once you decide which one to show publicly -->
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Pradeep Pandey · Kathmandu</span>
+    <span>Plain HTML. No trackers.</span>
+  </footer>
+
 </div>
-
 </body>
 </html>

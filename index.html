@@ -94,9 +94,6 @@ section > header .note { font-family: var(--f-mono); font-size: .8rem; color: va
 .now li { padding-left: 1.4rem; position: relative; }
 .now li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-family: var(--f-mono); }
 
-.writing a.title { font-family: var(--f-display); font-weight: 800; font-size: 1.2rem; line-height: 1.25; color: var(--ink); text-decoration: none; }
-.writing a.title:hover { color: var(--accent); }
-
 .contact { display: flex; flex-wrap: wrap; gap: 10px 28px; font-family: var(--f-mono); font-size: .95rem; }
 
 footer { border-top: 1px solid var(--rule); padding-top: 18px; font-family: var(--f-mono); font-size: .8rem; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; }
@@ -117,36 +114,24 @@ footer { border-top: 1px solid var(--rule); padding-top: 18px; font-family: var(
     <span>pradeeppandey.com.np</span>
     <nav aria-label="Sections">
       <a href="#work">Work</a>
-      <a href="#writing">Writing</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
 
   <header class="hero">
     <h1>Pradeep<br>Pandey</h1>
-    <p class="lead">I test mobile apps for a living. Mostly by writing software that does the testing for me.</p>
-    <div class="prose">
-      <p>Right now that's at <a href="https://licel.com">Licel</a>, a mobile app security company, where I work on Android and iOS test automation and the device farms it all runs on.</p>
-      <p>I'm based in Kathmandu. This site is where I keep the work, the writing, and whatever else I end up building.</p>
-    </div>
+    <p class="lead">The test automation doctor/architect that was here before AI</p>
+    <small>And will still be, even after AI.</small>
   </header>
 
   <section aria-labelledby="about-h">
     <header><h2 id="about-h">About</h2></header>
     <div class="prose">
-      <p>So the short version.. I'm a problem-solver first. New domains and new tech are the fun part. Routine is just part of life.</p>
-      <p>I've built test automation frameworks from the ground up enough times that it's become a habit. And CI/CD is where that work actually comes alive.</p>
-      <p>I've only ever worked with global, multicultural teams. I think that's made me a student of people as much as of software. I care about ownership, keeping things organised, and talking clearly and often.</p>
+      <p>My home is <a href="https://licel.com">Licel</a>, a mobile app security company. If you're in fintech or security critical mobile app domain, check out our products. </p>
+      <p>I work on Android and iOS test automation in tandem with our device farms. Not to brag but I wrote the app that orchestrates our appium tests on the farms. In Parallel 😁 but it was mostly claude. I'm just a privileged knowledge worker with a visa card.</p>
+      <p>I'm based in Kathmandu. This government subsizided free domain + github io site is where I will try to keep my work, my writing, and whatever else I end up building.</p>
     </div>
-  </section>
 
-  <section aria-labelledby="now-h">
-    <header><h2 id="now-h">Now</h2><span class="note">Oct 2026</span></header>
-    <ul class="now">
-      <li>Mobile test automation at Licel. Appium, Python, GitLab CI/CD, physical and virtual devices.</li>
-      <li>Rebuilding this site. I had it back in 2019, lost it, and only just got the domain back.</li>
-      <li>Writing a bit more, here and on LinkedIn.</li>
-    </ul>
   </section>
 
   <section id="work" aria-labelledby="work-h">
@@ -157,7 +142,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 18px; font-family: var(
         <div class="what">
           <h3>Licel <span>· remote</span></h3>
           <div class="role">QA Automation Engineer</div>
-          <p>Android and iOS test automation for mobile app security products. Pipelines in GitLab CI/CD, and a fleet of physical and virtual devices across several servers to run them on.</p>
+          <p>Android and iOS test automation for mobile app security products. Pipelines in GitLab CI/CD, and a fleet of physical and virtual devices and orchestrator apps across several servers to run them on. Also a central management app for device, farms, automated tests trigger/management/visualization.</p>
           <div class="tags"><span>Appium</span><span>Python</span><span>GitLab CI/CD</span><span>Android</span><span>iOS</span><span>Device farms</span></div>
         </div>
       </li>
@@ -192,40 +177,6 @@ footer { border-top: 1px solid var(--rule); padding-top: 18px; font-family: var(
           <h3>Himalaya College of Engineering</h3>
           <div class="role">Bachelor's, Computer Engineering</div>
           <p>Also ISTQB® Certified Tester, Foundation Level.</p>
-        </div>
-      </li>
-    </ol>
-  </section>
-
-  <section id="writing" class="writing" aria-labelledby="writing-h">
-    <header><h2 id="writing-h">Writing</h2><span class="note">mostly on LinkedIn, for now</span></header>
-    <ol class="log">
-      <li>
-        <div class="when">2026</div>
-        <div class="what">
-          <a class="title" href="https://www.linkedin.com/in/pradeipp/recent-activity/all/">A bank account in your name that you never opened</a>
-          <p>Leaked keyboxes, forged attestation and injected camera feeds. Every check is green and it's still fraud.</p>
-        </div>
-      </li>
-      <li>
-        <div class="when">2026</div>
-        <div class="what">
-          <a class="title" href="https://www.linkedin.com/in/pradeipp/recent-activity/all/">Write your comments yourself, at least</a>
-          <p>On AI-generated arguments in comment sections. Your English isn't broken. It's flavoured.</p>
-        </div>
-      </li>
-      <li>
-        <div class="when">2025</div>
-        <div class="what">
-          <a class="title" href="https://www.linkedin.com/in/pradeipp/recent-activity/all/">Let us invest in startups, not just donate</a>
-          <p>Why Section 12(c) of Nepal's Income Tax Act should say 'investment' instead of 'grant'.</p>
-        </div>
-      </li>
-      <li>
-        <div class="when">2025</div>
-        <div class="what">
-          <a class="title" href="https://www.linkedin.com/in/pradeipp/recent-activity/all/">Tracking January's expenses in February</a>
-          <p>Looking for an app in Nepal that pulls transactions from banks and eSewa, so I don't have to.</p>
         </div>
       </li>
     </ol>
